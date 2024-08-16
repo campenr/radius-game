@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://in3bw4g4x4qf"]
+
+[ext_resource type="Texture2D" uid="uid://nhxwf3d1sq8j" path="res://levels/bg-startscape.png" id="1_71ld3"]
+[ext_resource type="Script" path="res://units/player.gd" id="2_4b1m5"]
+[ext_resource type="Texture2D" uid="uid://djj0p7atmbssv" path="res://units/PNG_Parts&Spriter_Animation/Ship4/Ship4.png" id="2_no763"]
+[ext_resource type="Script" path="res://levels/parallax_background.gd" id="3_g80ly"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(0, 3)
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(73, 326)
+script = ExtResource("2_4b1m5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_no763")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+script = ExtResource("3_g80ly")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(3393, 324)
+scale = Vector2(0.685054, 0.716737)
+texture = ExtResource("1_71ld3")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 1000)
