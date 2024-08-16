@@ -1,19 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://in3bw4g4x4qf"]
+[gd_scene load_steps=4 format=3 uid="uid://in3bw4g4x4qf"]
 
 [ext_resource type="Texture2D" uid="uid://nhxwf3d1sq8j" path="res://levels/bg-startscape.png" id="1_71ld3"]
-[ext_resource type="Script" path="res://units/player.gd" id="2_4b1m5"]
-[ext_resource type="Texture2D" uid="uid://djj0p7atmbssv" path="res://units/PNG_Parts&Spriter_Animation/Ship4/Ship4.png" id="2_no763"]
+[ext_resource type="PackedScene" uid="uid://boqgfm75souot" path="res://units/player.tscn" id="1_q8yxs"]
 [ext_resource type="Script" path="res://levels/parallax_background.gd" id="3_g80ly"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, 3)
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(73, 326)
-script = ExtResource("2_4b1m5")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_no763")
+[node name="Player" parent="." instance=ExtResource("1_q8yxs")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
