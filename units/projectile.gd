@@ -4,19 +4,18 @@ const SPEED = 750
 var projectile_effects: Array[ProjectileEffect] = []
 
 
-func spawn(owner: Node, spawn_with_projectile_effects: Array, parent_transform: Transform2D):
-	var local_transform = parent_transform
-	for effect in spawn_with_projectile_effects:
-		var instance = effect.instantiate()
-		projectile_effects.append(instance)
-		add_child(instance)
-		instance.set_owner(self)
-		instance.modify_creation(owner, spawn_with_projectile_effects, local_transform)
+func spawn(owner: Node, spawn_with_projectile_effects: Array[ProjectileEffect], parent_transform: Transform2D):
+	# Execute any spawn modification effects for the projectile
+	print("spawned!")
+	projectile_effects = spawn_with_projectile_effects
+	for effect in projectile_effects:
+		effect.modify_creation(owner, projectile_effects, parent_transform)
 	# Spawn the default projectile
 	# TODO:: Projectile spawn modification may want to prevent the default from spawning
 	#    how do?
 	owner.add_child(self)
 	projectile_effects = projectile_effects
+	transform = parent_transform
 
 
 func _physics_process(delta):

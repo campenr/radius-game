@@ -25,7 +25,7 @@ enum MODIFICATION_TYPE {
 
 # Modify the logic that adds the projectile as a child to the scene.
 # This can be used to change spawn locations, quantities, etc.
-func modify_creation(owner: Node):
+func modify_creation(owner: Node, projectile_effects: Array[ProjectileEffect], transform: Transform2D):
 	pass
 
 # Modify the physics logic of the projectile. This function will be called

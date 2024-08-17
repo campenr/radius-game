@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgp68vbl25onx"]
+
+[ext_resource type="Script" path="res://projectiles/double_laser.gd" id="1_wqupk"]
+
+[node name="DoubleLaser" type="Node"]
+script = ExtResource("1_wqupk")
