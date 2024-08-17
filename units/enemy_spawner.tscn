@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://7n27h4530vhv"]
+
+[ext_resource type="Script" path="res://levels/enemy_spawner.gd" id="1_irjp5"]
+[ext_resource type="Texture2D" uid="uid://bahkf6s6jekvb" path="res://units/PNG_Animations/Shots/Shot5/shot5_exp7.png" id="2_kmkb4"]
+
+[node name="EnemySpawner" type="Marker2D"]
+script = ExtResource("1_irjp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-14, 0)
+texture = ExtResource("2_kmkb4")
+
+[node name="SpawnInterval" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SpawnFrequency" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnInterval" to="." method="_on_spawn_interval_timeout"]
+[connection signal="timeout" from="SpawnFrequency" to="." method="_on_spawn_frequency_timeout"]

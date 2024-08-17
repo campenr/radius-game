@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://in3bw4g4x4qf"]
+[gd_scene load_steps=5 format=3 uid="uid://in3bw4g4x4qf"]
 
 [ext_resource type="Texture2D" uid="uid://nhxwf3d1sq8j" path="res://levels/bg-startscape.png" id="1_71ld3"]
 [ext_resource type="PackedScene" uid="uid://boqgfm75souot" path="res://units/player.tscn" id="1_q8yxs"]
 [ext_resource type="Script" path="res://levels/parallax_background.gd" id="3_g80ly"]
+[ext_resource type="PackedScene" uid="uid://7n27h4530vhv" path="res://units/enemy_spawner.tscn" id="4_utuet"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, 3)
@@ -22,3 +23,9 @@ scale = Vector2(0.685054, 0.716737)
 texture = ExtResource("1_71ld3")
 region_enabled = true
 region_rect = Rect2(0, 0, 10000, 1000)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_utuet")]
+position = Vector2(1195, 167)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("4_utuet")]
+position = Vector2(1301, 568)
