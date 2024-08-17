@@ -8,14 +8,16 @@ func spawn(owner: Node, spawn_with_projectile_effects: Array[ProjectileEffect], 
 	# Execute any spawn modification effects for the projectile
 	print("spawned!")
 	projectile_effects = spawn_with_projectile_effects
+	var local_transform = parent_transform
 	for effect in projectile_effects:
-		effect.modify_creation(owner, projectile_effects, parent_transform)
+		add_child(effect.instantiate())
+		effect.modify_creation(owner, projectile_effects, local_transform)
 	# Spawn the default projectile
 	# TODO:: Projectile spawn modification may want to prevent the default from spawning
 	#    how do?
 	owner.add_child(self)
 	projectile_effects = projectile_effects
-	transform = parent_transform
+	transform = local_transform
 
 
 func _physics_process(delta):

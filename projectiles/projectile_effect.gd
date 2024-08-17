@@ -25,31 +25,38 @@ enum MODIFICATION_TYPE {
 
 # Modify the logic that adds the projectile as a child to the scene.
 # This can be used to change spawn locations, quantities, etc.
-func modify_creation(owner: Node, projectile_effects: Array[ProjectileEffect], transform: Transform2D):
+func modify_creation(owner: Node, projectile_effects: Array, transform: Transform2D):
 	pass
+
+func _calculate_vector_modification(
+	base_value: Vector2,
+	modifier_value: int,
+	modifier_type: MODIFICATION_TYPE
+):
+	# TODO:: How does godot mutability work? we do NOT want to modify the original modifier
+	var local_modifier = base_value
+	if modifier_type == MODIFICATION_TYPE.MULTIPLY:
+		local_modifier *= modifier_value
+	elif modifier_type == MODIFICATION_TYPE.ADD:
+		local_modifier += modifier_value
+	return local_modifier
 
 # Modify the physics logic of the projectile. This function will be called
 #    during the _physics_process.
 # Uses exported variables by default, and should only be overridden if you're
 #    doing something really interesting.
-func modify_physics(position_modifier: Vector2) -> Vector2:
-	# TODO:: How does godot mutability work? we do NOT want to modify the original modifier
-	var return_modifier = position_modifier
-	if speed_modifier_type == MODIFICATION_TYPE.MULTIPLY:
-		return_modifier *= speed_modifier
-	elif speed_modifier_type == MODIFICATION_TYPE.ADD:
-		return_modifier += speed_modifier
-	return return_modifier
+func modify_physics(physics_vector: Vector2) -> Vector2:
+	return _calculate_vector_modification(physics_vector, speed_modifier, speed_modifier_type)
 
 
 # Simple changes to the appearance using built-in features.
-# By default, 
-func modify_appearance():
-	pass
+# By default, modifies the scale of the projectile.
+func modify_appearance(scale: Vector2) -> Vector2:
+	return _calculate_vector_modification(owner.scale, scale_modifier, scale_modifier_type)
 
 
 # To change the sprite itself, elements of the animation, or otherwise add effects
-# Hard changes, rather than additions, will not
+# Hard changes, rather than additions, will be subject to effect_priority.
 func modify_animation():
 	pass
 
