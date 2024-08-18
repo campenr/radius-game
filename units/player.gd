@@ -9,9 +9,9 @@ const HORIZONTAL_BUFFER = 75
 
 @export var Projectile : PackedScene
 @onready var projectile_spawner = $ProjectileSpawner
+var FastLaserEffect : PackedScene = preload("res://projectiles/fast_laser.tscn")
 var DoubleLaserEffect : PackedScene = preload("res://projectiles/double_laser.tscn")
 var HugeLaserEffect : PackedScene = preload("res://projectiles/huge_laser.tscn")
-var FastLaserEffect : PackedScene = preload("res://projectiles/fast_laser.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +21,11 @@ func _ready():
 func fire():
 	print('fired!')
 	var p = Projectile.instantiate()
-	p.spawn(owner, projectile_effects, transform)
+	# Effects must be instantiated for each projectile.
+	# Finding a way to manage "which effects we need to instantiate" and
+	#    "Which effects are actually on this projectile" is key
+	var effects = [DoubleLaserEffect, HugeLaserEffect]
+	p.spawn(owner, effects, transform)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
