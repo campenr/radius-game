@@ -40,7 +40,6 @@ func _physics_process(delta):
 func _on_area_entered(area):
 	# TODO: apply effects on enemy hit. For now just despawn.
 	queue_free()
-	area.owner.queue_free()
 
 func _integrate_forces(delta):
 	scale = Vector2(100, 100)
