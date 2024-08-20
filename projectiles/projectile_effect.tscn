@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwxewmel1e8si"]
+
+[ext_resource type="Script" path="res://projectiles/projectile_effect.gd" id="1_eosdr"]
+
+[node name="ProjectileEffect" type="Node"]
+script = ExtResource("1_eosdr")

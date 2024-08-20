@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://i6l7jkbauvmf"]
+
+[ext_resource type="Script" path="res://projectiles/huge_laser.gd" id="1_ouvu5"]
+
+[node name="HugeLaser" type="Node"]
+script = ExtResource("1_ouvu5")
+scale_modifier = 10
