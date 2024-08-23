@@ -18,14 +18,17 @@ script = ExtResource("3_g80ly")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_repeat = 2
-position = Vector2(3393, 324)
-scale = Vector2(0.685054, 0.716737)
+position = Vector2(5001, 720)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_71ld3")
 region_enabled = true
-region_rect = Rect2(0, 0, 10000, 1000)
+region_rect = Rect2(0, 0, 20000, 2880)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_utuet")]
-position = Vector2(1195, 167)
+position = Vector2(2766, 193)
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("4_utuet")]
-position = Vector2(1301, 568)
+position = Vector2(2674, 1246)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("4_utuet")]
+position = Vector2(2923, 750)

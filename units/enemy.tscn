@@ -7,6 +7,7 @@
 size = Vector2(86, 45.5)
 
 [node name="Enemy" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_6h8a0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
