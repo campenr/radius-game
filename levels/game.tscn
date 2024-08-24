@@ -36,3 +36,7 @@ position = Vector2(2923, 750)
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("5_f7quc")
+
+[node name="SpawnTimer" type="Timer" parent="LevelManager"]
+
+[connection signal="timeout" from="LevelManager/SpawnTimer" to="LevelManager" method="_on_spawn_timer_timeout"]
