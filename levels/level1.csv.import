@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://djslqjcbaycg6"
+
+[deps]
+
+files=["res://levels/level1.spawnNode.translation", "res://levels/level1.enemyType.translation"]
+
+source_file="res://levels/level1.csv"
+dest_files=["res://levels/level1.spawnNode.translation", "res://levels/level1.enemyType.translation"]
+
+[params]
+
+compress=true
+delimiter=0

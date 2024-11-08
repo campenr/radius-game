@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://in3bw4g4x4qf"]
+[gd_scene load_steps=6 format=3 uid="uid://in3bw4g4x4qf"]
 
 [ext_resource type="Texture2D" uid="uid://nhxwf3d1sq8j" path="res://levels/bg-startscape.png" id="1_71ld3"]
 [ext_resource type="PackedScene" uid="uid://boqgfm75souot" path="res://units/player.tscn" id="1_q8yxs"]
 [ext_resource type="Script" path="res://levels/parallax_background.gd" id="3_g80ly"]
 [ext_resource type="PackedScene" uid="uid://7n27h4530vhv" path="res://units/enemy_spawner.tscn" id="4_utuet"]
+[ext_resource type="Script" path="res://levels/level_manager.gd" id="5_f7quc"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, 3)
@@ -32,3 +33,10 @@ position = Vector2(2674, 1246)
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("4_utuet")]
 position = Vector2(2923, 750)
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("5_f7quc")
+
+[node name="SpawnTimer" type="Timer" parent="LevelManager"]
+
+[connection signal="timeout" from="LevelManager/SpawnTimer" to="LevelManager" method="_on_spawn_timer_timeout"]
